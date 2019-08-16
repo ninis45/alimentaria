@@ -1,5 +1,10 @@
 <?php
 Asset::js('bootstrap.min.js');
+Asset::js('jquery/jquery.cooki.js');
+Asset::js(array(
+	
+	'scripts.js'
+)); 
 ?>
 <script type="text/javascript">
 	pyro = { 'lang' : {} };
