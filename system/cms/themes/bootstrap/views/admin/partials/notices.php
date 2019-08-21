@@ -1,5 +1,5 @@
 <?php if ($this->session->flashdata('error')): ?>
-<div class="alert error animated fadeIn">
+<div class="alert alert-danger">
 	<p><?php echo $this->session->flashdata('error'); ?></p>
 </div>
 <?php endif; ?>
@@ -29,8 +29,8 @@
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('success')): ?>
-<div class="alert success animated fadeIn">
-	<p><?php echo $this->session->flashdata('success'); ?></p>
+<div class="alert alert-success">
+	<?php echo $this->session->flashdata('success'); ?>
 </div>
 <?php endif; ?>
 
