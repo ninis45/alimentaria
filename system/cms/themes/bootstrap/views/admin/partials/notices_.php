@@ -6,7 +6,7 @@
 
 <?php if (validation_errors()): ?>
 <div class="alert alert-danger animated fadeIn">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">Ã—</span></button>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 	<p><?php echo validation_errors(); ?></p>
 </div>
 <?php endif; ?>

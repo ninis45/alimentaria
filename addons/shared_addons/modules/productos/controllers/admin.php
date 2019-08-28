@@ -39,7 +39,7 @@ class Admin extends Admin_Controller {
         if(!$producto_tmp= $this->producto_m->get_by('iIdProducto',$id))
 		{
 			$this->session->set_flashdata('error', lang('global:not_found_item'));
-			redirect('admin/boletines');
+			redirect('admin/productos');
 		}
          $producto = array(
              'nombre' => $producto_tmp->cNombre,
@@ -64,7 +64,7 @@ class Admin extends Admin_Controller {
                     'dtModificacion' => date('Y-m-d'),
                     
 			);
-			if($id = $this->producto_m->update($id,$data)){
+			if($this->producto_m->update($id,$data)){
 				
 				$this->session->set_flashdata('success',lang('global:save_success'));
 				
