@@ -19,6 +19,7 @@
 
 <?php if ($this->session->flashdata('notice')): ?>
 <div class="alert warning animated fadeIn">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
 	<p><?php echo $this->session->flashdata('notice');?></p>
 </div>
 <?php endif; ?>
