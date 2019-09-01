@@ -10,12 +10,14 @@
           <a class="navbar-brand" href="#">Project name</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <!--li><a href="#">Dashboard</a></li>
+          <!--ul class="nav navbar-nav">
+            <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li-->
-          </ul>
+            <li><a href="#">Help</a></li>
+          </ul-->
+          
+          <?php file_partial('sections'); ?>
           <ul class="nav navbar-nav navbar-right">
             <!--li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>

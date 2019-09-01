@@ -36,6 +36,7 @@ $lang['cp:nav_data']					= 'Datos';
 $lang['cp:nav_structure']				= 'Estructura';
 $lang['cp:nav_content']					= 'Contenido';
 $lang['cp:nav_misc']					= 'Misceláneas';
+$lang['cp:nav_catalog']					= 'Catalogos';
 
 $lang['cp:search']                      = 'Buscar';
 
