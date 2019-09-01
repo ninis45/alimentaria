@@ -36,33 +36,33 @@
             'sections'=>array(
                 'localidades'=>array(
                     'name'=>'localidades:title',
-                    'uri' => 'admin/planeacion',
+                    'uri' => 'admin/localidades',
         			'shortcuts' => array(
         				array(
-        					'name' => 'entregas:create_title',
-        					'uri' => 'admin/planeacion/create',
+        					'name' => 'localidades:create_title',
+        					'uri' => 'admin/localidades/create',
         					'class' => 'btn btn-primary'
         				),
         			)
                 ),
                 'municipios'=>array(
                     'name'=>'municipios:title',
-                    'uri' => 'admin/planeacion',
+                    'uri' => 'admin/localidades/municipios',
         			'shortcuts' => array(
         				array(
-        					'name' => 'entregas:create_title',
-        					'uri' => 'admin/planeacion/create',
+        					'name' => 'municipios:create_title',
+        					'uri' => 'admin/localidades/municipios/create',
         					'class' => 'btn btn-primary'
         				),
         			)
                 ),
                 'estados'=>array(
                     'name'=>'estados:title',
-                    'uri' => 'admin/planeacion',
+                    'uri' => 'admin/localidades/estados',
         			'shortcuts' => array(
         				array(
-        					'name' => 'entregas:create_title',
-        					'uri' => 'admin/planeacion/create',
+        					'name' => 'estados:create_title',
+        					'uri' => 'admin/localidades/estados/create',
         					'class' => 'btn btn-primary'
         				),
         			)

@@ -6,30 +6,27 @@ class Admin extends Admin_Controller {
 	{
 		parent::__construct();
         $this->lang->load('localidad');
-        $this->load->model(array('localidad_m'));
+        $this->load->model(array('municipio_m','estado_m','localidad_m'));
         $this->rules = array(
-			
+			array(
+				'field' => 'iIdMunicipio',
+				'label' => 'Municipio',
+				'rules' => 'trim|required'
+				),
   	      
 			array(
 				'field' => 'cNombre',
 				'label' => 'Nombre',
 				'rules' => 'trim|required'
-				),
-   	        array(
-				'field' => 'dtModificacion',
-				'label' => 'Modificacion',
-				'rules' => 'trim'
-				),
-   	        array(
-				'field' => 'dtAlta',
-				'label' => 'Alta',
-				'rules' => 'trim'
-				),
+				)
            
         );
  	}
     function index(){
-        $items = $this->localidad_m->get_all();
+        $items = $this->localidad_m->select('*,tblcatestado.cNombre as estado,tblcatmunicipio.cNombre as municipio,tblcatlocalidad.cNombre as localidad')
+                    ->join('tblcatmunicipio','tblcatmunicipio.iIdMunicipio=tblcatlocalidad.iIdMunicipio')
+                    ->join('tblcatestado','tblcatmunicipio.iIdEstado=tblcatestado.iIdEstado')
+                    ->get_all();
         $this->template->title($this->module_details['name'])
 			->set('items',$items)
             //->set('pagination',$pagination)
@@ -39,14 +36,15 @@ class Admin extends Admin_Controller {
     
     function edit($id=0)
     {
-        if(!$programa = $this->programa_m->get_by('iIdPrograma',$id))
+        if(!$localidad = $this->localidad_m->get($id))
 		{
 			$this->session->set_flashdata('error', lang('global:not_found_item'));
 			redirect('admin/programas');
 		}
          
         
-        
+        $municipio = $this->municipio_m->get($localidad->iIdMunicipio);
+        $iIdEstado = $municipio->iIdEstado;
         
         $this->form_validation->set_rules($this->rules);
 		
@@ -60,7 +58,7 @@ class Admin extends Admin_Controller {
                     'dtModificacion' => date('Y-m-d'),
                     
 			);
-			if($this->programa_m->update($id,$data)){
+			if($this->localidad_m->update($id,$data)){
 				
 				$this->session->set_flashdata('success',lang('global:save_success'));
 				
@@ -68,18 +66,23 @@ class Admin extends Admin_Controller {
 				$this->session->set_flashdata('error',lang('global:save_error'));
 				
 			}
-			redirect('admin/programas/edit/'.$id);
+			redirect('admin/localidades/edit/'.$id);
 		}
         elseif($_POST){
-            $programa = (Object)$_POST;
+            $localidad = (Object)$_POST;
+            $iIdEstado = $this->input->post('iIdEstado');
         }
          
          $this->template->title($this->module_details['name'])
-			->set('programa',$programa)
+            ->set('iIdEstado',$iIdEstado)
+            ->set('estados',$this->estado_m->dropdown('iIdEstado','cNombre')) 
+            ->set('municipios',$this->municipio_m->where('iIdEstado',$iIdEstado)->dropdown('iIdMunicipio','cNombre'))            
+			
+			->set('localidad',$localidad)
 			->build('admin/form');
     }
     function create(){
-        $planeacion = new StdClass();
+        $localidad = new StdClass();
         $this->form_validation->set_rules($this->rules);
 		
 				
@@ -87,12 +90,13 @@ class Admin extends Admin_Controller {
 		{
             $post = $this->input->post();
             
-			$data= array(
+			$data= array(                    
+                    'iIdMunicipio' => $post['iIdMunicipio'],
 					'cNombre'       => $post['cNombre'],					
                     'dtModificacion' => date('Y-m-d'),
                     'dtalta'         => date('Y-m-d'),
 			);
-			if($id = $this->programa_m->insert($data)){
+			if($id = $this->localidad_m->insert($data)){
 				
 				$this->session->set_flashdata('success',lang('global:save_success'));
 				
@@ -100,15 +104,19 @@ class Admin extends Admin_Controller {
 				$this->session->set_flashdata('error',lang('global:save_error'));
 				
 			}
-			redirect('admin/programas');
+			redirect('admin/localidades');
         }
         
   	    foreach ($this->rules as $rule)
 		{
-			$planeacion->{$rule['field']} = $this->input->post($rule['field']);
+			$localidad->{$rule['field']} = $this->input->post($rule['field']);
 		}
-         $this->template->title($this->module_details['name'])            
-			->set('planeacion',$planeacion)
+         $this->template->title($this->module_details['name'])  
+            ->append_js('module::form.js')
+            ->set('iIdEstado',$this->input->post('iIdEstado'))
+            ->set('estados',$this->estado_m->dropdown('iIdEstado','cNombre')) 
+            ->set('municipios',$this->municipio_m->where('iIdEstado',$this->input->post('iIdEstado'))->dropdown('iIdMunicipio','cNombre'))              
+			->set('localidad',$localidad)
 			->build('admin/form');
     }
 }
