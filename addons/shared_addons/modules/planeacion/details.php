@@ -32,20 +32,16 @@
             'skip_xss' => false,
             'roles' => array(
 				'edit', 'create', 'delete'
-			),
-            'sections'=>array(
-                'planeacion'=>array(
-                    'name'=>'planeacion:title',
-                    'uri' => 'admin/planeacion',
-        			'shortcuts' => array(
+			),            
+            'uri' => 'admin/planeacion',
+			'shortcuts' => array(
         				array(
-        					'name' => 'entregas:create_title',
+        					'name' => 'planeacion:create_title',
         					'uri' => 'admin/planeacion/create',
         					'class' => 'btn btn-primary'
         				),
-        			)
-                )
-           )
+			)
+           
 		);
         
         /*if (function_exists('group_has_role'))

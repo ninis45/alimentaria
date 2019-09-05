@@ -74,6 +74,7 @@ class Admin extends Admin_Controller {
         }
          
          $this->template->title($this->module_details['name'])
+            ->append_js('module::form.js')
             ->set('iIdEstado',$iIdEstado)
             ->set('estados',$this->estado_m->dropdown('iIdEstado','cNombre')) 
             ->set('municipios',$this->municipio_m->where('iIdEstado',$iIdEstado)->dropdown('iIdMunicipio','cNombre'))            
@@ -118,6 +119,12 @@ class Admin extends Admin_Controller {
             ->set('municipios',$this->municipio_m->where('iIdEstado',$this->input->post('iIdEstado'))->dropdown('iIdMunicipio','cNombre'))              
 			->set('localidad',$localidad)
 			->build('admin/form');
+    }
+    function lista($id=0)
+    {
+        
+        $locs = $this->localidad_m->where('iIdMunicipio',$id)->get_all();
+        return $this->template->build_json($locs);
     }
 }
 ?>

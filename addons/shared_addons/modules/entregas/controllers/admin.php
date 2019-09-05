@@ -81,5 +81,6 @@ class Admin extends Admin_Controller {
 			->set('entrega',$entrega)
 			->build('admin/form');
     }
+    
 }
 ?>
