@@ -18,7 +18,9 @@
 
     <!-- Custom styles for this template -->
     <?php echo Asset::css('dashboard.css'); ?>
-
+    
+    <?php echo Asset::css('font-awesome.min.css');?>
+    <?php echo Asset::css('datepicker.css');?>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

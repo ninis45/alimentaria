@@ -40,7 +40,7 @@
         			'shortcuts' => array(
         				array(
         					'name' => 'entregas:create_title',
-        					'uri' => 'admin/entregas/create',
+        					'uri' => 'admin/entregas/create/{{id_planeacion}}',
         					'class' => 'btn btn-primary'
         				),
         			)

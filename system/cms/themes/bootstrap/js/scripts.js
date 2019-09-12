@@ -79,7 +79,9 @@ jQuery(function($) {
 	 * This initializes all JS goodness
 	 */
 	pyro.init = function() {
-
+        $('.date-picker').datepicker({format:'yyyy-mm-dd'}).on('changeDate', function(ev) {
+				  $(this).datepicker('hide');
+				}).data('datepicker');
 		// Select menu for smaller screens
 		$("<select />").appendTo("nav#primary");
 

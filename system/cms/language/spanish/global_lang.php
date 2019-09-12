@@ -119,6 +119,6 @@ $lang['global:save_success']			    = 'Registro guardado correctamente';
 $lang['global:save_error']			    = 'Error al tratar de guardar el registro';
 $lang['global:delete_error']			    = 'Error al tratar de eliminar los registros';
 $lang['global:delete_success']			    = 'Registro(s) borrado(s) correctamente';
-
+$lang['global:not_found']			    = 'El registro no existe o fue eliminado';
 /* End of file global_lang.php */
 ?>

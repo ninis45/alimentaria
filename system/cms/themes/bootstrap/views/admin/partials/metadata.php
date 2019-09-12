@@ -3,7 +3,9 @@ Asset::js('bootstrap.min.js');
 Asset::js('jquery/jquery.cooki.js');
 Asset::js(array(
 	
-	'scripts.js'
+	
+    'date-time/bootstrap-datepicker.min.js',
+    'scripts.js'
 )); 
 ?>
 <script type="text/javascript">
